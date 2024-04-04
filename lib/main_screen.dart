@@ -1,4 +1,3 @@
-
 import 'dart:math';
 import 'package:flutter/material.dart';
 
@@ -8,9 +7,11 @@ class MainScreen extends StatefulWidget {
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
+
 class _MainScreenState extends State<MainScreen> {
   Color _backgroundColor = Colors.white;
-  // function that generate Color
+
+  // function that generates a random color
   void changeBackgroundColor() {
     final Random random = Random();
     final int red = random.nextInt(256);
@@ -21,6 +22,7 @@ class _MainScreenState extends State<MainScreen> {
       _backgroundColor = newColor;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -28,25 +30,40 @@ class _MainScreenState extends State<MainScreen> {
       child: Scaffold(
         backgroundColor: _backgroundColor,
         body: Center(
-          child: Text(
-            'Hello there',
-            style: TextStyle(
+          child: StyleText(
+            backgroundColor: _backgroundColor,
+            text: 'Hello there',
+            textStyle: const TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
-              color: textColor(_backgroundColor),
             ),
           ),
         ),
       ),
     );
   }
+}
 
-// a method that determines the color of the text depending on the backgroundColor
-  Color textColor(Color backgroundColor) {
-    final double luminance = (0.299 * backgroundColor.red +
-            0.587 * backgroundColor.green +
-            0.114 * backgroundColor.blue) /
-        255;
-    return luminance > 0.5 ? Colors.black : Colors.white;
+class StyleText extends StatelessWidget {
+  final Color backgroundColor;
+  final String text;
+  final TextStyle textStyle;
+
+  const StyleText({super.key, 
+    required this.backgroundColor,
+    required this.text,
+    required this.textStyle,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final double luminance =
+        (0.299 * backgroundColor.red + 0.587 * backgroundColor.green + 0.114 * backgroundColor.blue) /
+            255;
+    final Color textColor = luminance > 0.5 ? Colors.black : Colors.white;
+    return Text(
+      text,
+      style: textStyle.copyWith(color: textColor),
+    );
   }
 }
