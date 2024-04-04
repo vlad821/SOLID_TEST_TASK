@@ -57,10 +57,10 @@ class StyleText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double luminance =
+    final double brightness =
         (0.299 * backgroundColor.red + 0.587 * backgroundColor.green + 0.114 * backgroundColor.blue) /
             255;
-    final Color textColor = luminance > 0.5 ? Colors.black : Colors.white;
+    final Color textColor = brightness > 0.5 ? Colors.black : Colors.white;
     return Text(
       text,
       style: textStyle.copyWith(color: textColor),
