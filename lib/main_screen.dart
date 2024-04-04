@@ -11,7 +11,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   Color _backgroundColor = Colors.white;
   // function that generate Color
-  void _changeBackgroundColor() {
+  void changeBackgroundColor() {
     final Random random = Random();
     final int red = random.nextInt(256);
     final int green = random.nextInt(256);
@@ -24,7 +24,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: _changeBackgroundColor,
+      onTap: changeBackgroundColor,
       child: Scaffold(
         backgroundColor: _backgroundColor,
         body: Center(
