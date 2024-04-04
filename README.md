@@ -5,7 +5,7 @@
 Clone or download this repository
 
 ```bash
-[[https://github.com/vlad821/Weather_App.git](https://github.com/vlad821/Test_task.git)](https://github.com/vlad821/Test_task.git)
+https://github.com/vlad821/Test_task.git
 ```
 Config flutter project :
 
